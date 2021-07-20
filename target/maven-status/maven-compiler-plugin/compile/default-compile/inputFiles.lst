@@ -1,1 +1,11 @@
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/repositories/RecipeRepository.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/domain/UnitOfMeasure.java
 /Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/Application.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/controllers/IndexController.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/repositories/UnitOfMeasureRepository.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/domain/Ingredient.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/domain/Recipe.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/domain/Notes.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/domain/Difficulty.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/repositories/CategoryRepository.java
+/Users/josh/Desktop/SpringRecipeProject/src/main/java/catherine/recipe/project/domain/Category.java
