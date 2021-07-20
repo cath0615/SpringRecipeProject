@@ -23,8 +23,6 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //todo add
-    //private Difficulty difficulty;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     //defines relationship from Recipe class and this Recipe will be stored
@@ -35,6 +33,9 @@ public class Recipe {
     @Lob
     //create image as a binary large objects field(blob) inside the database
     private Byte[] image;
+
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     //create the relationship for one to one mapping between notes and recipe
     //cascade: make the recipe the owner
@@ -127,5 +128,13 @@ public class Recipe {
 
     public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }
