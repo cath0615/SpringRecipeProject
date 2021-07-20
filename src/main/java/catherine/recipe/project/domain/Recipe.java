@@ -1,6 +1,9 @@
 package catherine.recipe.project.domain;
 
+import org.thymeleaf.expression.Sets;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 //recipe object is now represented as POJO in the database and have been annotated
@@ -22,6 +25,12 @@ public class Recipe {
     private String directions;
     //todo add
     //private Difficulty difficulty;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    //defines relationship from Recipe class and this Recipe will be stored
+    //on a property on the child/sets of ingredients on each object of
+    //Ingredient's recipe property
+    private Set<Ingredient> ingredients;
 
     @Lob
     //create image as a binary large objects field(blob) inside the database
@@ -110,5 +119,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
