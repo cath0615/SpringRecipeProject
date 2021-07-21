@@ -3,6 +3,7 @@ package catherine.recipe.project.domain;
 import org.thymeleaf.expression.Sets;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,13 +23,15 @@ public class Recipe {
     private Integer servings;
     private String source;
     private String url;
+
+    @Lob
     private String directions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     //defines relationship from Recipe class and this Recipe will be stored
     //on a property on the child/sets of ingredients on each object of
     //Ingredient's recipe property
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob
     //create image as a binary large objects field(blob) inside the database
@@ -48,7 +51,7 @@ public class Recipe {
     @JoinTable(name = "recipe_category",
     joinColumns = @JoinColumn(name = "recipe_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
 
     public Long getId() {
         return id;
