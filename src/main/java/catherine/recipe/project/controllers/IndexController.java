@@ -21,7 +21,7 @@ public class IndexController {
     }
 
     @RequestMapping({"", "/", "/index"})
-    public String getIndexPage(Model model) {
+    public String getIndexPage(Model model) { //model from the spring framework is an interface so we can mock it
         //assign it to a property on the view model of "recipes"
         model.addAttribute("recipes", recipeService.getRecipes());
         return "index";
