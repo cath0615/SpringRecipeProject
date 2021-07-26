@@ -1,1 +1,5 @@
+catherine/recipe/project/controllers/IndexControllerTest.class
+catherine/recipe/project/services/RecipeServiceImplTest.class
 catherine/recipe/project/ApplicationTests.class
+catherine/recipe/project/repositories/UnitOfMeasureRepositoryIT.class
+catherine/recipe/project/domain/CategoryTest.class
