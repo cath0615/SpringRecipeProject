@@ -1,6 +1,5 @@
 package catherine.recipe.project.domain;
 
-import org.thymeleaf.expression.Sets;
 
 import javax.persistence.*;
 import java.util.HashSet;
