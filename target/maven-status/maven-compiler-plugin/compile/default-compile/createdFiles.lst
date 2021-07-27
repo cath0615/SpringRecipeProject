@@ -1,7 +1,14 @@
 catherine/recipe/project/domain/Ingredient.class
+catherine/recipe/project/domain/Recipe.class
+catherine/recipe/project/domain/Category.class
 catherine/recipe/project/domain/UnitOfMeasure.class
+catherine/recipe/project/bootstrap/RecipeBootstrap.class
+catherine/recipe/project/repositories/CategoryRepository.class
+catherine/recipe/project/repositories/RecipeRepository.class
 catherine/recipe/project/services/RecipeService.class
 catherine/recipe/project/domain/Difficulty.class
 catherine/recipe/project/domain/Notes.class
+catherine/recipe/project/repositories/UnitOfMeasureRepository.class
 catherine/recipe/project/services/RecipeServiceImpl.class
+catherine/recipe/project/Application.class
 catherine/recipe/project/controllers/IndexController.class
