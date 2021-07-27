@@ -140,7 +140,7 @@ public class Recipe {
         return this;
     }
 
-    public Set<Ingredient> addIngredient() {
+    public Set<Ingredient> getIngredient() {
         return ingredients;
     }
 
