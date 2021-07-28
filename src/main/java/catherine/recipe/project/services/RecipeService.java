@@ -10,4 +10,5 @@ public interface RecipeService {
     Recipe findById(Long l);
     //we want to persist this into the database
     RecipeCommand saveRecipeCommand(RecipeCommand command);
+    RecipeCommand findCommandById(Long l);
 }
