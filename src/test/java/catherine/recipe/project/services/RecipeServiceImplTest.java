@@ -1,5 +1,7 @@
 package catherine.recipe.project.services;
 
+import catherine.recipe.project.converters.RecipeCommandToRecipe;
+import catherine.recipe.project.converters.RecipeToRecipeCommand;
 import catherine.recipe.project.domain.Recipe;
 import catherine.recipe.project.repositories.RecipeRepository;
 import org.junit.Before;
@@ -22,12 +24,16 @@ public class RecipeServiceImplTest {
     //need dependency since we need to inject the repository
     @Mock
     RecipeRepository recipeRepository;
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
 
     @Before
     public void setUp() throws Exception {
         //initialize our mock
         MockitoAnnotations.initMocks(this); //tells mokito to give me a mock repository
-        recipeService = new RecipeServiceImpl(recipeRepository); //init our recipeService
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand); //init our recipeService
     }
 
     @Test
