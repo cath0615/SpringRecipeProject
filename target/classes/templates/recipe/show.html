@@ -95,7 +95,7 @@
                   <li th:remove="all">1 Cup of milk</li>
                   <li th:remove="all">1 Teaspoon of chocolate</li>
                   <!--/*@thymesVar id="recipe" type="catherine.recipe.project.domain.Recipe"*/-->
-                  <li th:each="ingredient : ${recipe.ingredient}"
+                  <li th:each="ingredient : ${recipe.ingredients}"
                       th:text="${(ingredient.getAmount() + ' ' + ingredient.uom.getDescription()
                       + ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar</li>
                 </ul>
