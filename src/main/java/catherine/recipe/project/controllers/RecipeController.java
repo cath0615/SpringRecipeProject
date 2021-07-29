@@ -17,26 +17,23 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @GetMapping
-    @RequestMapping("/recipe/{id}/show")
+    @GetMapping("/recipe/{id}/show")
     //The @PathVariable annotation is used to extract the value from the URI.
     public String showById(@PathVariable String id, Model model){
         model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
     }
 
-    @GetMapping
     //Annotation for mapping HTTP GET requests onto specific handler methods. Specifically, @GetMapping is a
     //composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod. GET)
     //implement the method that will render the view
-    @RequestMapping("/recipe/new")
+    @GetMapping("/recipe/new")
     public String newRecipe(Model model) {
         model.addAttribute("recipe", new RecipeCommand());
         return "recipe/recipeform";
     }
 
-    @GetMapping
-    @RequestMapping("recipe/{id}/update")
+    @GetMapping("recipe/{id}/update")
     public String updateRecipe(@PathVariable String id, Model model){
         model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
         return  "recipe/recipeform";
@@ -44,16 +41,15 @@ public class RecipeController {
 
     //need to handle to post back
     //@ModelAttribute: an annotation to tell spring to bind the form post parameters to the recipeCommand object
-    @PostMapping//tell spring when we get a post to the recipe url, invoke this specific method
-    @RequestMapping("recipe")
+    //tell spring when we get a post to the recipe url, invoke this specific method
+    @PostMapping("recipe")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
         //a command to tell spring MVC to redirect to a specific url
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
 
-    @GetMapping
-    @RequestMapping("recipe/{id}/delete")
+    @GetMapping("recipe/{id}/delete")
     public String deleteById(@PathVariable String id) {
         log.debug("Deleting id: " + id);
         recipeService.deleteById(Long.valueOf(id));
