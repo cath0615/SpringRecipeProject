@@ -92,6 +92,7 @@ public class RecipeControllerTest {
                 .andExpect(model().attributeExists("recipe"));
     }
 
+    @Test
     public void testDeleteAction() throws Exception{
         //using get method, cannot do a delete method with HTTP unless using Javascript
         mockMvc.perform(get("/recipe/1/delete"))
