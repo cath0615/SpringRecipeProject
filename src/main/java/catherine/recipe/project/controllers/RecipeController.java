@@ -2,13 +2,12 @@ package catherine.recipe.project.controllers;
 
 import catherine.recipe.project.commands.RecipeCommand;
 import catherine.recipe.project.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * Created by jt on 6/19/17.
- */
+@Slf4j
 @Controller //make this a controller to autowire the dependency injection
 public class RecipeController {
 
@@ -18,6 +17,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
+    @GetMapping
     @RequestMapping("/recipe/{id}/show")
     //The @PathVariable annotation is used to extract the value from the URI.
     public String showById(@PathVariable String id, Model model){
@@ -25,6 +25,9 @@ public class RecipeController {
         return "recipe/show";
     }
 
+    @GetMapping
+    //Annotation for mapping HTTP GET requests onto specific handler methods. Specifically, @GetMapping is a
+    //composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod. GET)
     //implement the method that will render the view
     @RequestMapping("/recipe/new")
     public String newRecipe(Model model) {
@@ -32,6 +35,7 @@ public class RecipeController {
         return "recipe/recipeform";
     }
 
+    @GetMapping
     @RequestMapping("recipe/{id}/update")
     public String updateRecipe(@PathVariable String id, Model model){
         model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
@@ -46,5 +50,13 @@ public class RecipeController {
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
         //a command to tell spring MVC to redirect to a specific url
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
+    }
+
+    @GetMapping
+    @RequestMapping("recipe/{id}/delete")
+    public String deleteById(@PathVariable String id) {
+        log.debug("Deleting id: " + id);
+        recipeService.deleteById(Long.valueOf(id));
+        return "redirect:/";
     }
 }
