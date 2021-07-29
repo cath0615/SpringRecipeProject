@@ -1,12 +1,15 @@
 package catherine.recipe.project.domain;
 
-import lombok.Data;
+
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = {"recipes"})
 //marks a field so that Lombok doesn't use that field when generating equals and hashCode
 @Entity
