@@ -4,6 +4,7 @@ import catherine.recipe.project.domain.Difficulty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,4 +29,5 @@ public class RecipeCommand {
     private Difficulty difficulty;
     private NotesCommand notes;
     private Set<CategoryCommand> categories = new HashSet<>();
+    private Byte[] image;
 }

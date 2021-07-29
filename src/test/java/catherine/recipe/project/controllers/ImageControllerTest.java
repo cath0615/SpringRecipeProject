@@ -7,10 +7,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
@@ -72,6 +74,40 @@ public class ImageControllerTest {
                 .andExpect(header().string("Location", "/recipe/1/show"));
 
         verify(imageService, times(1)).saveImageFile(anyLong(), any());
+    }
+
+    @Test
+    public void renderImageFromDB() throws Exception {
+
+        //given
+        RecipeCommand command = new RecipeCommand();
+        command.setId(1L);
+
+        //87-94: create a byte array and do the conversion from primitive type to object
+        String s = "fake image text";
+        Byte[] bytesBoxed = new Byte[s.getBytes().length];
+
+        int i = 0;
+
+        for (byte primByte : s.getBytes()){
+            bytesBoxed[i++] = primByte;
+        }
+
+        command.setImage(bytesBoxed);
+
+        //use Mockito mock to mimic the service activity
+        when(recipeService.findCommandById(anyLong())).thenReturn(command);
+
+        //when
+        //to iterate the mockMvc stuff we use a mock servlet response
+        MockHttpServletResponse response = mockMvc.perform(get("/recipe/1/recipeimage"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse();
+
+        //get the response content as a byte array
+        byte[] responseBytes = response.getContentAsByteArray();
+
+        assertEquals(s.getBytes().length, responseBytes.length);
     }
 
 
