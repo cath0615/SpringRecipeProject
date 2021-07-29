@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Data
 @EqualsAndHashCode(exclude = {"recipes"})
+//marks a field so that Lombok doesn't use that field when generating equals and hashCode
 @Entity
 public class Category {
     @Id
